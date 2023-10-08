@@ -10,17 +10,10 @@ class Hostel extends StatefulWidget {
 }
 
 class _HostelState extends State<Hostel> {
-  final String loginUrl = 'http://cpi.edu.bd/site/userlogin';
-
-  Future<void> _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Could not launch URL'),
-        ),
-      );
+  _launchURL(base_url) async {
+    final Uri url = Uri.parse(base_url);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch  ');
     }
   }
 
@@ -76,17 +69,17 @@ class _HostelState extends State<Hostel> {
                       width: MediaQuery.of(context).size.width,
                       padding: const EdgeInsets.all(20),
                       decoration: buttonDecoration,
-                      child: const Row(
+                      child: Row(
                         children: [
                           Icon(
                             Icons
-                                .person_3_outlined, // You can choose the icon you want here
+                                .person_2_sharp, // You can choose the icon you want here
                             color: Colors.black,
                             size: 24, // You can adjust the size as needed
                           ),
-                          SizedBox(width: 8), // A
-                          Text(
-                            'Student Login',
+                          SizedBox(width: 8), //
+                          const Text(
+                            'Teacher Login',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
@@ -106,17 +99,17 @@ class _HostelState extends State<Hostel> {
                       width: MediaQuery.of(context).size.width,
                       padding: const EdgeInsets.all(20),
                       decoration: buttonDecoration,
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(
                             Icons
-                                .person_2_sharp, // You can choose the icon you want here
+                                .person_3_outlined, // You can choose the icon you want here
                             color: Colors.black,
                             size: 24, // You can adjust the size as needed
                           ),
-                          SizedBox(width: 8), //
-                          const Text(
-                            'Teacher Login',
+                          SizedBox(width: 8), // A
+                          Text(
+                            'Student Login',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,

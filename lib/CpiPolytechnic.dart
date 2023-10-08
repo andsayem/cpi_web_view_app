@@ -10,15 +10,22 @@ class CpiPolytechnic extends StatefulWidget {
 }
 
 class _CpiPolytechnicState extends State<CpiPolytechnic> {
-  Future<void> _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Could not launch URL'),
-        ),
-      );
+  // Future<void> _launchURL(String url) async {
+  //   if (await canLaunch(url)) {
+  //     await launch(url);
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(
+  //         content: Text('Could not launch URL'),
+  //       ),
+  //     );
+  //   }
+  // }
+
+  _launchURL(base_url) async {
+    final Uri url = Uri.parse(base_url);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch  ');
     }
   }
 
@@ -67,35 +74,6 @@ class _CpiPolytechnicState extends State<CpiPolytechnic> {
               child: Column(
                 children: [
                   InkWell(
-                    onTap: () => _launchURL('http://cpi.edu.bd/site/userlogin'),
-                    child: Container(
-                      margin: const EdgeInsets.all(8),
-                      width: MediaQuery.of(context).size.width,
-                      padding: const EdgeInsets.all(20),
-                      decoration: buttonDecoration,
-                      child: const Row(
-                        children: [
-                          Icon(
-                            Icons
-                                .person_3_outlined, // You can choose the icon you want here
-                            color: Colors.black,
-                            size: 24, // You can adjust the size as needed
-                          ),
-                          SizedBox(width: 8), // A
-                          Text(
-                            'Student Login',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight
-                                  .bold, // Add fontWeight for emphasis
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  InkWell(
                     onTap: () => _launchURL('http://cpi.edu.bd/site/login'),
                     child: Container(
                       margin: const EdgeInsets.all(8),
@@ -113,6 +91,35 @@ class _CpiPolytechnicState extends State<CpiPolytechnic> {
                           SizedBox(width: 8), //
                           Text(
                             'Teacher Login',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight
+                                  .bold, // Add fontWeight for emphasis
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => _launchURL('http://cpi.edu.bd/site/userlogin'),
+                    child: Container(
+                      margin: const EdgeInsets.all(8),
+                      width: MediaQuery.of(context).size.width,
+                      padding: const EdgeInsets.all(20),
+                      decoration: buttonDecoration,
+                      child: const Row(
+                        children: [
+                          Icon(
+                            Icons
+                                .person_3_outlined, // You can choose the icon you want here
+                            color: Colors.black,
+                            size: 24, // You can adjust the size as needed
+                          ),
+                          SizedBox(width: 8), // A
+                          Text(
+                            'Student Login',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
