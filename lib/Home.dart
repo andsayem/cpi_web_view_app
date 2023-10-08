@@ -12,8 +12,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final String facebookUrl = 'https://www.facebook.com';
-  final String youtubeUrl = 'https://www.youtube.com';
+  final String facebookUrl = 'https://www.facebook.com/CPIMT';
+  final String youtubeUrl = 'https://www.youtube.com/@cpimt';
 
   _launchURL(base_url) async {
     final Uri url = Uri.parse(base_url);
@@ -210,14 +210,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           onTap: _launchYouTubeURL,
                           child: Container(
                             margin: const EdgeInsets.all(8),
-                            padding: const EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(15),
                             decoration: const BoxDecoration(
                               color: Colors.red,
                               shape: BoxShape.circle,
                             ),
                             child: Image.asset(
                               'assets/images/youtube.png',
-                              width: 30,
+                              width: 20,
                               // Make sure the asset path is correct
                             ),
                           ),
