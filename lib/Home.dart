@@ -1,8 +1,8 @@
 import 'package:cpi/CpiPolytechnic.dart';
 import 'package:cpi/Hostel.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key});
@@ -12,11 +12,29 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
+  final String facebookUrl = 'https://www.facebook.com';
+  final String youtubeUrl = 'https://www.youtube.com';
+
   _launchURL(base_url) async {
     final Uri url = Uri.parse(base_url);
     if (!await launchUrl(url)) {
-      throw Exception('Could not launch  ');
+      throw Exception('Could not launch');
+    }
+  }
+
+  _launchFacebookURL() async {
+    if (await canLaunch(facebookUrl)) {
+      await launch(facebookUrl);
+    } else {
+      throw 'Could not launch Facebook';
+    }
+  }
+
+  _launchYouTubeURL() async {
+    if (await canLaunch(youtubeUrl)) {
+      await launch(youtubeUrl);
+    } else {
+      throw 'Could not launch YouTube';
     }
   }
 
@@ -70,19 +88,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Row(
                         children: [
                           Icon(
-                            Icons
-                                .cast_for_education, // You can choose the icon you want here
+                            Icons.cast_for_education,
                             color: Colors.black,
-                            size: 24, // You can adjust the size as needed
+                            size: 24,
                           ),
-                          SizedBox(width: 8), // A
+                          SizedBox(width: 8),
                           Text(
                             'CPI Polytechnic',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
-                              fontWeight: FontWeight
-                                  .bold, // Add fontWeight for emphasis
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
@@ -114,19 +130,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Row(
                         children: [
                           Icon(
-                            Icons
-                                .hotel, // You can choose the icon you want here
+                            Icons.hotel,
                             color: Colors.black,
-                            size: 24, // You can adjust the size as needed
+                            size: 24,
                           ),
-                          SizedBox(width: 8), // A
+                          SizedBox(width: 8),
                           Text(
                             'CPI Hostel',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
-                              fontWeight: FontWeight
-                                  .bold, // Add fontWeight for emphasis
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
@@ -151,16 +165,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
                       child: const Row(
-                        // Use Row to add an icon and text side by side
                         children: [
                           Icon(
-                            Icons.web, // You can choose the icon you want here
+                            Icons.web,
                             color: Colors.black,
-                            size: 24, // You can adjust the size as needed
+                            size: 24,
                           ),
                           SizedBox(
-                              width:
-                                  8), // Add some spacing between the icon and text
+                            width: 8,
+                          ),
                           Text(
                             'CPI Web',
                             style: TextStyle(
@@ -173,10 +186,49 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
+                  Expanded(
+                    flex: 1,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: _launchFacebookURL,
+                          child: Container(
+                            margin: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(10),
+                            decoration: const BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(
+                              Icons.facebook,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: _launchYouTubeURL,
+                          child: Container(
+                            margin: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(10),
+                            decoration: const BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.asset(
+                              'assets/images/youtube.png',
+                              width: 30,
+                              // Make sure the asset path is correct
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
