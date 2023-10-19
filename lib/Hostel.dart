@@ -19,7 +19,7 @@ class _HostelState extends State<Hostel> {
 
   @override
   Widget build(BuildContext context) {
-    final BoxDecoration buttonDecoration = BoxDecoration(
+    const BoxDecoration buttonDecoration = BoxDecoration(
       color: Colors.amber,
       boxShadow: [
         BoxShadow(
@@ -31,7 +31,7 @@ class _HostelState extends State<Hostel> {
       borderRadius: BorderRadius.all(Radius.circular(8)),
     );
 
-    final TextStyle buttonTextStyle = TextStyle(
+    const TextStyle buttonTextStyle = TextStyle(
       color: Colors.black,
       fontSize: 20,
     );
@@ -63,13 +63,13 @@ class _HostelState extends State<Hostel> {
                 children: [
                   InkWell(
                     onTap: () =>
-                        _launchURL('https://cpibd.net/hostel/site/userlogin'),
+                        _launchURL('https://cpibd.net/hostel/site/login'),
                     child: Container(
                       margin: const EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width,
                       padding: const EdgeInsets.all(20),
                       decoration: buttonDecoration,
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(
                             Icons
@@ -78,7 +78,7 @@ class _HostelState extends State<Hostel> {
                             size: 24, // You can adjust the size as needed
                           ),
                           SizedBox(width: 8), //
-                          const Text(
+                          Text(
                             'Teacher Login',
                             style: TextStyle(
                               color: Colors.black,

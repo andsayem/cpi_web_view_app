@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HexColor('#f48000'),
-        title: const Text('CPI Polytechnic'),
+        title: const Text('CPI Polytechnic, Dhaka'),
         titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
         centerTitle: true,
       ),
@@ -148,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   InkWell(
-                    onTap: () => _launchURL('http://cpi.edu.bd/site/userlogin'),
+                    onTap: () => _launchURL('http://cpi.edu.bd'),
                     child: Container(
                       margin: const EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width,
